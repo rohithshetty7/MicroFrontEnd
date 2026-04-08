@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install dependencies
         run: npm install
@@ -33,5 +33,4 @@ jobs:
           aws-region: us-east-1
 
       - name: Upload to S3
-        run: |
-          aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest --delete
+        run: aws s3 sync dist s3://sheridashboard/container/latest --delete
