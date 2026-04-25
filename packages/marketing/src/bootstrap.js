@@ -4,8 +4,10 @@ import App from './App';
 import { createBrowserHistory } from 'history';
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory }) => {
-  const history = defaultHistory || createBrowserHistory();
+const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+  const history = defaultHistory || createBrowserHistory({
+    initialPath: [initialPath]
+  });
   if (onNavigate) {
     history.listen(onNavigate);
   }
